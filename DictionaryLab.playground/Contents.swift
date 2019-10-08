@@ -100,6 +100,7 @@ assert(authorScores["Erik Larson"] == 9.2, "Was expecting 9.2, but got \(authorS
 
 // You are given an array of dictionaries. Each dictionary in the array describes the score of a person. Find the person with the best score and print his full name.
 
+
 var peopleWithScores: [[String: String]] = [
     [
         "firstName": "Calvin",
@@ -132,7 +133,7 @@ var highestScore = 0
 
 var highestScoringName = ""
 
-for dict in peopleWithScores{
+for dict in peopleWithScores{  // dict is a dictionary
     for (key, value) in dict {
         if key == "score" && Int(value) ?? -1 > highestScore{
           highestScore = Int(value) ?? -1
@@ -140,17 +141,16 @@ for dict in peopleWithScores{
         }
     }
 
-print(highestScore)
+print("The highest score is: \(highestScore)")
 
 for dict in peopleWithScores {
-    print(dict["firstname"])
-    //if dict["score"] == String(highestScore) {
+    if dict["score"] == String(highestScore) {
         
-    // highestScoringName = String(dict["firstname"] ?? "bob")
-    //}
+     highestScoringName = String(dict["firstName"] ?? "no first name") + " " + String(dict["lastName"] ?? "no last name")
+    }
 }
 
-// print(highestScoringName)
+print(highestScoringName)
 
 // Your code here
 
@@ -213,3 +213,4 @@ for (key, value) in frequencyDict {
 // print(mostFrequentChar)
 
 assert(mostFrequentChar == "e", "Was expecting e, but got \(mostFrequentChar)")
+

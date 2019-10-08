@@ -134,16 +134,23 @@ var highestScoringName = ""
 
 for dict in peopleWithScores{
     for (key, value) in dict {
-        if key == "score"{
-           // print(value)
-            if Int(value) ?? -1 > highestScore {
-                highestScoringName = key // wrong this will return "score" 
+        if key == "score" && Int(value) ?? -1 > highestScore{
+          highestScore = Int(value) ?? -1
             }
         }
     }
-}
-print(highestScoringName)
 
+print(highestScore)
+
+for dict in peopleWithScores {
+    print(dict["firstname"])
+    //if dict["score"] == String(highestScore) {
+        
+    // highestScoringName = String(dict["firstname"] ?? "bob")
+    //}
+}
+
+// print(highestScoringName)
 
 // Your code here
 
@@ -156,14 +163,17 @@ print(highestScoringName)
 
 var cubeDict: [Int: Int] = [:]
 
-// Your code here
+for num in 1...20 {
+    cubeDict[num] = num * num * num
+}
 
-//assert(cubeDict.count == 20, "Was expecting 20, but got \(cubeDict.count)")
-//assert(cubeDict[1] == 1, "Was expecting 1, but got \(String(describing: cubeDict[1]))")
-//assert(cubeDict[2] == 8, "Was expecting 8, but got \(String(describing: cubeDict[2]))")
-//assert(cubeDict[3] == 27, "Was expecting 27, but got \(String(describing: cubeDict[3]))")
-//assert(cubeDict[14] == 2744, "Was expecting 2744, but got \(String(describing: cubeDict[14]))")
-//assert(cubeDict[20] == 8000, "Was expecting 8000, but got \(String(describing: cubeDict[20]))")
+
+assert(cubeDict.count == 20, "Was expecting 20, but got \(cubeDict.count)")
+assert(cubeDict[1] == 1, "Was expecting 1, but got \(String(describing: cubeDict[1]))")
+assert(cubeDict[2] == 8, "Was expecting 8, but got \(String(describing: cubeDict[2]))")
+assert(cubeDict[3] == 27, "Was expecting 27, but got \(String(describing: cubeDict[3]))")
+assert(cubeDict[14] == 2744, "Was expecting 2744, but got \(String(describing: cubeDict[14]))")
+assert(cubeDict[20] == 8000, "Was expecting 8000, but got \(String(describing: cubeDict[20]))")
 
 
 // Question Six
@@ -172,10 +182,34 @@ var cubeDict: [Int: Int] = [:]
 
  var myString = "We're flooding people with information. We need to feed it through a processor. A human must turn information into intelligence or knowledge. We've tended to forget that no computer will ever ask a new question."
 
+var lowerCasedMyString = myString.lowercased()
+
 var frequencyDict: [Character: Int] = [:]
 
+var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+for letter in alphabet {
+    var counter = 0
+    for char in lowerCasedMyString {
+        if letter == String(char) {
+            counter += 1
+        }
+    }
+    frequencyDict[Character(letter)] = counter
+}
+
+// print(frequencyDict)
+
+var highestNum = 0
 var mostFrequentChar: Character = "?"
 
-// Your code here
+for (key, value) in frequencyDict {
+    if value > highestNum{
+        highestNum = value
+        mostFrequentChar = key
+    }
+}
 
-//assert(mostFrequentChar == "e", "Was expecting e, but got \(mostFrequentChar)")
+// print(mostFrequentChar)
+
+assert(mostFrequentChar == "e", "Was expecting e, but got \(mostFrequentChar)")
